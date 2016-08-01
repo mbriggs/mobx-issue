@@ -1,0 +1,32 @@
+{
+  "name": "mobx-issue",
+  "version": "0.1.0",
+  "description": "illustrate conflict",
+  "main": "./dist/index",
+  "typings": "./dist/mobx-issue.d.ts",
+  "scripts": {
+    "test": "ts-node ./node_modules/.bin/tape test/** | tap-notify | tap-difflet",
+    "test:w": "nodemon -e js,ts --watch lib --watch test --exec npm test",
+    "clean": "rm -rf dist && rm -f mobx-issue.d.ts",
+    "compile": "npm run clean && tsc --outDir dist && npm run generate-typings",
+    "compile:w": "npm run clean && tsc --watch --outDir dist",
+    "generate-typings": "dts-bundle --name mobx-issue --out mobx-issue.d.ts --main ./dist/index.d.ts --baseDir dist --removeSource"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@types/tape": "^4.2.27",
+    "angular-core": "0.0.5",
+    "mobx": "2.3.7",
+    "reflect-metadata": "0.1.3",
+    "zone.js": "^0.6.12"
+  },
+  "devDependencies": {
+    "dts-bundle": "^0.5.0",
+    "nodemon": "^1.9.2",
+    "tap-difflet": "^0.6.0",
+    "tap-notify": "^1.0.0",
+    "tape": "^4.6.0",
+    "ts-node": "^0.9.3",
+    "typescript": "^2.0.0"
+  }
+}
